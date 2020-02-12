@@ -1,5 +1,5 @@
 ﻿using Model_used;
-using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Windows;
 
 namespace DataBinding_A_collections
@@ -9,11 +9,11 @@ namespace DataBinding_A_collections
     /// </summary>
     public partial class MainWindow : Window
     {
-        public List<Employee> Employees { get; private set; }
+        public ObservableCollection<Employee> Employees { get; private set; }
 
         public MainWindow()
         {
-            Employees = new List<Employee>()
+            Employees = new ObservableCollection<Employee>()
             {
                 new Employee() {Age = 45, LastName = "Simpson", Name="Homer", PicturePath = "images/homer.png"},
                 new Employee() {Age = 60, LastName = "Griffin", Name="Peter", PicturePath = "images/peter_griffin.png"},
