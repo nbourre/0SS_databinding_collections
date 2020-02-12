@@ -1,0 +1,45 @@
+﻿<Window x:Class="DataBinding_A_collections.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:DataBinding_A_collections"
+        xmlns:other="clr-namespace:Model_used;assembly=Model_used"
+        DataContext="{Binding RelativeSource={RelativeSource self}}"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="800" Width="800">
+    <Window.Resources>
+        <DataTemplate x:Key="EmployeeTemplate" DataType="{x:Type other:Employee}">
+            <StackPanel>
+                <Image VerticalAlignment="Top" x:Name="EmployeePicture" Width="150" Source="{Binding PicturePath}"/>
+                <Grid VerticalAlignment="Top">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition />
+                        <ColumnDefinition />
+                    </Grid.ColumnDefinitions>
+                    <Label VerticalAlignment="Center" FontWeight="Bold" Grid.Row="0" Grid.Column="0" Content="Name :"/>
+                    <Label VerticalAlignment="Center" FontWeight="Bold" Grid.Row="1" Grid.Column="0" Content="LastName :"/>
+                    <Label VerticalAlignment="Center" FontWeight="Bold" Grid.Row="2" Grid.Column="0" Content="Age :"/>
+                    <TextBlock VerticalAlignment="Center"
+                               Grid.Row="0" Grid.Column="1" x:Name="Name" Width="120"
+                               Text="{Binding Name}"/>
+                    <TextBlock VerticalAlignment="Center"
+                               Grid.Row="1" Grid.Column="1" x:Name="LastName" Width="120"
+                               Text="{Binding LastName}"/>
+                    <TextBlock VerticalAlignment="Center"
+                               Grid.Row="2" Grid.Column="1" x:Name="Age" Width="120"
+                               Text="{Binding Age}"/>
+                </Grid>
+            </StackPanel>
+        </DataTemplate>
+    </Window.Resources>
+    <StackPanel>
+        <ListBox ItemTemplate="{StaticResource EmployeeTemplate}" ItemsSource="{Binding Employees}" Margin="25"/>
+        <Button Width="120" Height="40" Content="Add Employee" Click="AddEmployee_click"/>
+    </StackPanel>
+</Window>
