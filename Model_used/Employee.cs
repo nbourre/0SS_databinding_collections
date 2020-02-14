@@ -10,6 +10,7 @@ namespace Model_used
         public string LastName { get; set; }
         public int Age { get; set; }
         public string PicturePath { get; set; }
+        public string Department { get; set; }
 
         public event PropertyChangedEventHandler PropertyChanged;
 

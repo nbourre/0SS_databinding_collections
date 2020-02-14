@@ -12,14 +12,11 @@ namespace DataBinding_A_collections
     public partial class MainWindow : Window
     {
         public ObservableCollection<Employee> Employees { get; private set; }
+        private EmployeeDataService employeeDataService = new EmployeeDataService();
 
         public MainWindow()
         {
-            Employees = new ObservableCollection<Employee>()
-            {
-                new Employee() {Age = 45, LastName = "Simpson", Name="Homer", PicturePath = "images/homer.png"},
-                new Employee() {Age = 60, LastName = "Griffin", Name="Peter", PicturePath = "images/peter_griffin.png"},
-            };
+            Employees = new ObservableCollection<Employee>(employeeDataService.GetAll());
 
             InitializeComponent();
         }
